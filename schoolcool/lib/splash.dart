@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:schoolcool/constants.dart';
+import 'package:schoolcool/login-signup.dart';
+import 'package:schoolcool/login.dart';
 
 import 'home.dart';
 
@@ -15,23 +18,21 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    _navigateohome();
+    _navigatetohome();
   }
 
-  _navigateohome() async {
+  _navigatetohome() async {
     await Future.delayed(const Duration(milliseconds: 5000), () {});
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => const MyHomePage(
-                  title: 'SchoolCool',
-                )));
+            builder: (context) => LogInSignUp()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF54339),
+      backgroundColor: kPrimaryColor,
       body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +42,7 @@ class _SplashState extends State<Splash> {
               ),
               Container(
                 child: const SpinKitThreeBounce(
-                  color: Colors.white,
+                  color: kPrimaryLightColor,
                   size: 30.0,
                 ),
               ),

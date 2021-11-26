@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcool/Splash.dart';
-import 'package:schoolcool/screens/welcome/welcome.dart';
+// import 'package:schoolcool/screens/welcome/welcome.dart';
+import 'login.dart';
+import 'signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SS Academy',
       theme: ThemeData(),
-      //home: const Splash(),
-      home: Welcome(),
+      home: const Splash(),
+      //home: Welcome(),
     );
   }
 }
