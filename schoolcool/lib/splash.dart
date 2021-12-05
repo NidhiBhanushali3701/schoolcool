@@ -8,7 +8,7 @@ import 'package:schoolcool/login.dart';
 import 'home.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+  const Splash({Key key}) : super(key: key);
 
   @override
   _SplashState createState() => _SplashState();
