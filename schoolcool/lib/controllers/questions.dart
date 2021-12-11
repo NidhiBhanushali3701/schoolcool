@@ -18,24 +18,24 @@ const List sample_data = [
     "id": 2,
     "question": "In the manufacture of sulphuric acid by contact process Tyndall box is used to",
     "options": ['convert SO2 and SO3', ' test the presence of dust particles', 'filter dust particles', 'remove impurities'],
-    "answer_index": 2,
+    "answer_index": 1,
   },
   {
     "id": 3,
     "question": "Fluorine differs from rest of the halogens in some of its properties. This is due to",
     "options": ['its smaller size and high electronegativity.', 'lack of d-orbitals.', 'low bond dissociation energy', 'All of the these.'],
-    "answer_index": 2,
+    "answer_index": 1,
   },
   {
     "id": 4,
     "question": "Transistion metals, despite high E° oxidation, are poor reducing agents. The incorrect reason is",
     "options": [' high heat of vaporization', 'high ionization energies.', 'low heats of hydration.', 'complex forming nature.'],
-    "answer_index": 2,
+    "answer_index": 3,
   },
   {
     "id": 5,
     "question": "Anomalous electronic configuration in the 3d series are of",
     "options": ['Cr and Fe', 'Cu and Zn', 'Fe and Cu', 'Cr and Cu'],
-    "answer_index": 2,
+    "answer_index": 3,
   },
 ];
