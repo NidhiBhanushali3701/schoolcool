@@ -25,19 +25,30 @@ class _LogInSignUpState extends State<LogInSignUp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 50,
+                ),
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => const Login()));
                   },
-                  child: const Text("Login",style: TextStyle(color: kPrimaryLightColor),),
+                  child: Text('LOGIN',
+                      style: TextStyle(color: Colors.white, fontSize: 25)),
+                ),
+                SizedBox(
+                  height: 50,
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
-                  child: const Text("Register",style: TextStyle(color: kPrimaryLightColor),),
+                  child: Text('REGISTER',
+                      style: TextStyle(color: Colors.white, fontSize: 25)),
+                ),
+                SizedBox(
+                  height: 50,
                 ),
               ],
             ),

@@ -8,23 +8,21 @@ import 'package:schoolcool/SidebarPage.dart';
 
 // ignore: must_be_immutable
 class MyHomePage extends StatefulWidget {
- 
-  var title='HOME PAGE';
-  MyHomePage({Key key, this.title}) : super(key: key);
+  var title = 'HOME PAGE', email;
+  MyHomePage({Key key, this.email}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: SidebarPage() 
-      );
-
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: SidebarPage(
+          email: widget.email,
+        ));
   }
 }
