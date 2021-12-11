@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  MyHomePage(title: "School-Cool")));
+                                  MyHomePage(title: "Dashboard")));
                     },
                     child: Text("Log In"),
                   ),

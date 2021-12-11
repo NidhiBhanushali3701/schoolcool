@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //@dart=2.9
 import 'package:schoolcool/SidebarPage.dart';
+//link the dashboard here
 
 class MyHomePage extends StatefulWidget {
  

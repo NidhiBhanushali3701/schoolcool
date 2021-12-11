@@ -5,9 +5,22 @@
 import 'dart:math' as math show pi;
 import 'package:flutter/services.dart';
 import 'package:schoolcool/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcool/home.dart';
+import 'package:schoolcool/listview.dart';
+
+launchWebsite() async{
+  const url = 'https://www.geeksforgeeks.org/';
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: true, forceWebView: true);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
 
 class SidebarPage extends StatefulWidget {
   @override
@@ -38,7 +51,7 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'MCQs',
         icon: Icons.question_answer_rounded,
-        onPressed: () => setState(() => _headline = 'Errors'),
+        onPressed: () =>setState(() => ListViewPage) , //_headline = 'DashBoard'- need to link the MCQs menu page here
       ),
       CollapsibleItem(
         text: 'Puzzles',
@@ -48,7 +61,7 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'Website',
         icon: Icons.web_rounded,
-        onPressed: () => setState(() => _headline = 'Notifications'),
+        onPressed: () => setState(() => launchWebsite ),
       ),
       CollapsibleItem(
         text: 'Exit',
@@ -67,21 +80,24 @@ class _SidebarPageState extends State<SidebarPage> {
         items: _items,
         avatarImg: _avatarImg,
         title: '<Username>',
+        
         // onTitleTap: () {
         //   ScaffoldMessenger.of(context).showSnackBar(
         //       SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
         // },
         body: _body(size, context),
-        backgroundColor: Colors.blueGrey,
-        selectedTextColor: kPrimaryLightColor,
+        backgroundColor: kPrimaryColor,
+        selectedTextColor: Colors.white,
         unselectedTextColor: Colors.black,
         unselectedIconColor: Colors.black,
-        textStyle: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+        selectedIconColor: Colors.white,
+        textStyle: TextStyle(fontSize: 17,),
         titleStyle: TextStyle(
-            fontSize: 20,
+            fontSize: 22,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold),
-        toggleTitleStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        toggleTitleStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        
         sidebarBoxShadow: [
           BoxShadow(
             color: kPrimaryLightColor,
@@ -90,7 +106,7 @@ class _SidebarPageState extends State<SidebarPage> {
             offset: Offset(3, 3),
           ),
           BoxShadow(
-            color: Colors.blueGrey,
+            color: kPrimaryColor,
             blurRadius: 50,
             spreadRadius: 0.01,
             offset: Offset(3, 3),
