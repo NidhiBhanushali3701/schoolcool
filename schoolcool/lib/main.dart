@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red//necessary
       ),
-      home: Mcq(),
+      home: const Mcq(),
       //  home: const Profile(),
       // home: const Splash(), 
       //home: Welcome(),
