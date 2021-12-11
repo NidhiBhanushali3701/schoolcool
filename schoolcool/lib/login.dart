@@ -3,6 +3,8 @@ import 'package:schoolcool/constants.dart';
 import 'package:schoolcool/home.dart';
 
 class Login extends StatefulWidget {
+  const Login({Key key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -19,19 +21,19 @@ class _LoginState extends State<Login> {
             child: Form(
               child: Column(
                 children: [
-                  Text("Login"),
+                  const Text("Login"),
                   TextFormField(
                     controller: TextEditingController(),
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.email),
+                    decoration: const InputDecoration(
+                        icon: Icon(Icons.email),
                         hintText: 'Enter Email',
                         labelText: "Email"),
                   ),
                   TextFormField(
                     controller: TextEditingController(),
                     obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.password),
+                    decoration: const InputDecoration(
+                        icon: Icon(Icons.password),
                         hintText: 'Enter Password',
                         labelText: "Password"),
                   ),
@@ -43,7 +45,7 @@ class _LoginState extends State<Login> {
                               builder: (context) =>
                                   MyHomePage(title: "Dashboard")));
                     },
-                    child: Text("Log In"),
+                    child: const Text("Log In"),
                   ),
                   Image.asset('assets/logo4.png'),
                 ],

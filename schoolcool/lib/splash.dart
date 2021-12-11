@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:schoolcool/constants.dart';
-import 'package:schoolcool/login-signup.dart';
-import 'package:schoolcool/login.dart';
+import 'package:schoolcool/login_signup.dart';
+// import 'package:schoolcool/login.dart';
 
-import 'home.dart';
+// import 'home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key key}) : super(key: key);
@@ -26,7 +26,7 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => LogInSignUp()));
+            builder: (context) => const LogInSignUp()));
   }
 
   @override

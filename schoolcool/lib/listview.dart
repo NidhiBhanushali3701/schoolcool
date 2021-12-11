@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcool/SidebarPage.dart';
+// import 'package:schoolcool/SidebarPage.dart';
 import 'package:schoolcool/details.dart';
-import 'package:schoolcool/home.dart';
 
 class ListViewPage extends StatefulWidget
 {
+  const ListViewPage({Key key}) : super(key: key);
+
   @override
-_buildListViewPage createState() => _buildListViewPage();
+BuildListViewPage createState() => BuildListViewPage();
 }
 
-class _buildListViewPage extends State<ListViewPage>
+class BuildListViewPage extends State<ListViewPage>
     {
       
 
@@ -45,9 +46,9 @@ class _buildListViewPage extends State<ListViewPage>
     {
         return ListTile(
           title: Text('The List item #$index'),
-          subtitle:Text('The subtitle'),
-          leading: Icon(Icons.thumb_up_sharp),
-          trailing: Icon(Icons.arrow_forward_rounded),
+          subtitle:const Text('The subtitle'),
+          leading: const Icon(Icons.thumb_up_sharp),
+          trailing: const Icon(Icons.arrow_forward_rounded),
           onTap: (){
             Navigator.push(
             context,

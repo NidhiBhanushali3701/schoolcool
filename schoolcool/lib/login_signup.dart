@@ -5,6 +5,8 @@ import 'package:schoolcool/login.dart';
 import 'package:schoolcool/signup.dart';
 
 class LogInSignUp extends StatefulWidget {
+  const LogInSignUp({Key key}) : super(key: key);
+
   @override
   _LogInSignUpState createState() => _LogInSignUpState();
 }
@@ -26,16 +28,16 @@ class _LogInSignUpState extends State<LogInSignUp> {
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Login()));
+                        MaterialPageRoute(builder: (context) => const Login()));
                   },
-                  child: Text("Login",style: TextStyle(color: kPrimaryLightColor),),
+                  child: const Text("Login",style: TextStyle(color: kPrimaryLightColor),),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
-                  child: Text("Register",style: TextStyle(color: kPrimaryLightColor),),
+                  child: const Text("Register",style: TextStyle(color: kPrimaryLightColor),),
                 ),
               ],
             ),

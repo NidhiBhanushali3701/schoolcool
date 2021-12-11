@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcool/Splash.dart';
-import 'package:schoolcool/details.dart';
-import 'package:schoolcool/home.dart';
-import 'package:schoolcool/details.dart';
-import 'package:schoolcool/listview.dart';
+import 'package:schoolcool/profile_page.dart';
+// import 'package:schoolcool/Splash.dart';
+// import 'package:schoolcool/details.dart';
+// import 'package:schoolcool/details.dart';
+// import 'package:schoolcool/listview.dart';
 // import 'package:schoolcool/screens/welcome/welcome.dart';
-import 'login.dart';
-import 'signup.dart';
+// import 'login.dart';
+// import 'signup.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   // const MyApp({Key key}) : super(key: key); necessary
 
   // This widget is the root of your application.
@@ -24,24 +26,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red//necessary
       ),
-       home: const Splash(), 
+       home: const Profile(),
+      // home: const Splash(), 
       //home: Welcome(),
       //home: MyHomePage(), //not necessary
     );
   }
 }
 
-    class MyHomePage extends StatelessWidget{
-      @override
-      Widget build(BuildContext context){
-        return Scaffold(
-          appBar: AppBar(title: Text(
-            'Subject',)
-          ),
-          body: ListViewPage() ,
+    // class MyHomePage extends StatelessWidget{
+    //   @override
+    //   Widget build(BuildContext context){
+    //     return Scaffold(
+    //       appBar: AppBar(title: Text(
+    //         'Subject',)
+    //       ),
+    //       body: ListViewPage() ,
 
-          );
-    }
+    //       );
+    // }
 
     // ListView _buildListView(BuildContext context)
     // {
@@ -63,7 +66,7 @@ class MyApp extends StatelessWidget {
     // }
     // );
         
-    }
+    // }
  //}
 
 
