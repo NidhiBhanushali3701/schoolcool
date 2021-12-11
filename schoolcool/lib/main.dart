@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcool/mcq.dart';
+import 'package:schoolcool/splash.dart';
 // import 'package:schoolcool/profile_page.dart';
 // import 'package:schoolcool/Splash.dart';
 // import 'package:schoolcool/details.dart';
@@ -27,9 +28,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red//necessary
       ),
-      home: const Mcq(),
+      //home: const Mcq(),
       //  home: const Profile(),
-      // home: const Splash(), 
+      home: Splash(),
       //home: Welcome(),
       //home: MyHomePage(), //not necessary
     );

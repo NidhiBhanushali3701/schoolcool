@@ -1,168 +1,701 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcool/constants.dart';
+import 'package:flutter/cupertino.dart';
 
-class Profile extends StatelessWidget{
-  const Profile({Key key}) : super(key: key);
- 
+import 'constants.dart';
+
+class Profile extends StatefulWidget {
+  @override
+  MapScreenState createState() => MapScreenState();
+}
+
+class MapScreenState extends State<Profile>
+    with SingleTickerProviderStateMixin {
+  bool _status = true;
+  final FocusNode myFocusNode = FocusNode();
+  TextEditingController _nameC = TextEditingController(text: 'Name'),
+      _emailC = TextEditingController(text: 'E-Mail'),
+      _mobileC = TextEditingController(text: '0000000000');
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Profile page", style: TextStyle(
-                  fontSize:20, 
-                  color:kPrimaryDarkColor, 
-                  fontWeight:FontWeight.w600,
-                ),
-                ),
-        elevation: 0.0,
-        backgroundColor: kPrimaryLightColor,
-        leading: IconButton
-        (
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
-      ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                height: 450,
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        // Image.asset('assets/Icons/Removedbg/Editprof.png'),
-                        GestureDetector(
-                          onTap: () {}, // handle your image tap here
-                          child: Image.asset(
-                            'assets/Icons/Removedbg/Editprof.png',
-                            // fit: BoxFit.cover, // this is the solution for border
-                            // width: 110.0,
-                            // height: 110.0,
+        body: StreamBuilder(
+            stream: null,
+            builder: (context, snapshot) {
+              return Container(
+                color: Colors.white,
+                child: ListView(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          height: 250.0,
+                          color: Colors.white,
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 20.0, top: 20.0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.arrow_back_ios,
+                                        color: kPrimaryColor,
+                                        size: 22.0,
+                                      ),
+                                      Padding(
+                                        padding:
+                                        EdgeInsets.only(left: 25.0),
+                                        child: Text('PROFILE',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0,
+                                                fontFamily:
+                                                'sans-serif-light',
+                                                color: Colors.black)),
+                                      )
+                                    ],
+                                  )),
+                              Padding(
+                                padding: EdgeInsets.only(top: 20.0),
+                                child: Stack(
+                                    fit: StackFit.loose,
+                                    children: <Widget>[
+                                      Row(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            child: CircleAvatar(
+                                              radius: 20,
+                                              backgroundImage: NetworkImage(
+                                                'https://source.unsplash.com/50x50/?portrait',
+                                              ),
+                                            ),
+                                            width: 175.0,
+                                            height: 175.0,
+                                            // decoration: BoxDecoration(
+                                            //   shape: BoxShape.circle,
+                                            //   image: DecorationImage(
+                                            //     image:
+                                            //         ExactAssetImage('assets/images/as.png'),
+                                            //     fit: BoxFit.cover,
+                                            //   ),
+                                            // )
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 90.0, right: 100.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              CircleAvatar(
+                                                backgroundColor:
+                                                kPrimaryColor,
+                                                radius: 25.0,
+                                                child: Icon(
+                                                  Icons.camera_alt,
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            ],
+                                          )),
+                                    ]),
+                              )
+                            ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {}, // handle your image tap here
-                          child: Image.asset(
-                            'assets/Icons/Removedbg/aboutus.png',
-                            // fit: BoxFit.cover, // this is the solution for border
-                            // width: 110.0,
-                            // height: 110.0,
+                        Container(
+                          color: Color(0xffFFFFFF),
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 25.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 25.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              'Parsonal Information',
+                                              style: TextStyle(
+                                                  fontSize: 18.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.end,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            _status
+                                                ? _getEditIcon()
+                                                : Container(),
+                                          ],
+                                        )
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 25.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              'Name',
+                                              style: TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 2.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Flexible(
+                                          child: TextField(
+                                            controller: _nameC,
+                                            decoration:
+                                            const InputDecoration(
+                                              hintText: "Enter Your Name",
+                                            ),
+                                            enabled: !_status,
+                                            autofocus: !_status,
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 25.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              'Email ID',
+                                              style: TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 2.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Flexible(
+                                          child: TextField(
+                                            controller: _emailC,
+                                            decoration:
+                                            const InputDecoration(
+                                                hintText:
+                                                "Enter Email ID"),
+                                            enabled: !_status,
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 25.0),
+                                    child: new Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        new Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            new Text(
+                                              'Mobile',
+                                              style: TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 25.0, right: 25.0, top: 2.0),
+                                    child: new Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        new Flexible(
+                                          child: new TextField(
+                                            controller: _mobileC,
+                                            decoration: const InputDecoration(
+                                                hintText:
+                                                "Enter Mobile Number"),
+                                            enabled: !_status,
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                !_status
+                                    ? _getActionButtons()
+                                    : Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Container(
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "Done",
+                                          style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight:
+                                              FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        // Image.asset('assets/Icons/Removedbg/aboutus.png'),
+                        )
                       ],
-                      ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: () {}, // handle your image tap here
-                          child: Image.asset(
-                            'assets/Icons/Removedbg/puzzels.png',
-                            // fit: BoxFit.cover, // this is the solution for border
-                            // width: 110.0,
-                            // height: 110.0,
-                          ),
-                        ),GestureDetector(
-                          onTap: () {}, // handle your image tap here
-                          child: Image.asset(
-                            'assets/Icons/Removedbg/mcqs.png',
-                            // fit: BoxFit.cover, // this is the solution for border
-                            // width: 110.0,
-                            // height: 110.0,
-                          ),
-                        ),
-                        // Image.asset('assets/Icons/Removedbg/Editprof.png'),
-                        // Image.asset('assets/Icons/Removedbg/aboutus.png'),
-                      ],
-                      ),
-                  
+                    ),
                   ],
                 ),
-              )
-            ],
-          ),
-            
-          CustomPaint(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-            ),
-            painter: Header()
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: Text("Profile", style: TextStyle(
-                  fontSize:35, 
-                  letterSpacing:1.2, 
-                  color:kPrimaryDarkColor, 
-                  fontWeight:FontWeight.w600,
-                )
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(2.0),
-                width: MediaQuery.of(context).size.width/2,
-                height: MediaQuery.of(context).size.width/2,
-                decoration: BoxDecoration(
-                  border:Border.all(color:kPrimaryColor, width:2),
-                  shape:BoxShape.circle,
-                  color: kPrimaryLightColor,
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/avatar.png')
-                  )
-                )
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom:200, left: 100),
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.edit, 
-                  color: kPrimaryColor
-                ), 
-                onPressed:() {}
-                ),
-              )
-            ),
-          
-        ],
-        )
-      );
+              );
+              // if (snapshot.connectionState == ConnectionState.waiting) {
+              //   return Column(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       CircularProgressIndicator(),
+              //       Visibility(
+              //         visible: snapshot.hasData,
+              //         child: Text(
+              //           snapshot.data.toString(),
+              //           style:
+              //               const TextStyle(color: Colors.black, fontSize: 24),
+              //         ),
+              //       ),
+              //     ],
+              //   );
+              // }
+              // else if (snapshot.connectionState == ConnectionState.active ||
+              //     snapshot.connectionState == ConnectionState.done) {
+              //   if (snapshot.hasError) {
+              //     return const Text('Error');
+              //   } else if (snapshot.hasData) {
+              //     return Container(
+              //       color: Colors.white,
+              //       child: ListView(
+              //         children: <Widget>[
+              //           Column(
+              //             children: <Widget>[
+              //               Container(
+              //                 height: 250.0,
+              //                 color: Colors.white,
+              //                 child: Column(
+              //                   children: <Widget>[
+              //                     Padding(
+              //                         padding: EdgeInsets.only(
+              //                             left: 20.0, top: 20.0),
+              //                         child: Row(
+              //                           crossAxisAlignment:
+              //                               CrossAxisAlignment.start,
+              //                           children: <Widget>[
+              //                             Icon(
+              //                               Icons.arrow_back_ios,
+              //                               color: kPrimaryColor,
+              //                               size: 22.0,
+              //                             ),
+              //                             Padding(
+              //                               padding:
+              //                                   EdgeInsets.only(left: 25.0),
+              //                               child: Text('PROFILE',
+              //                                   style: TextStyle(
+              //                                       fontWeight: FontWeight.bold,
+              //                                       fontSize: 20.0,
+              //                                       fontFamily:
+              //                                           'sans-serif-light',
+              //                                       color: Colors.black)),
+              //                             )
+              //                           ],
+              //                         )),
+              //                     Padding(
+              //                       padding: EdgeInsets.only(top: 20.0),
+              //                       child: Stack(
+              //                           fit: StackFit.loose,
+              //                           children: <Widget>[
+              //                             Row(
+              //                               crossAxisAlignment:
+              //                                   CrossAxisAlignment.center,
+              //                               mainAxisAlignment:
+              //                                   MainAxisAlignment.center,
+              //                               children: <Widget>[
+              //                                 Container(
+              //                                   child: CircleAvatar(
+              //                                     radius: 20,
+              //                                     backgroundImage: NetworkImage(
+              //                                       'https://source.unsplash.com/50x50/?portrait',
+              //                                     ),
+              //                                   ),
+              //                                   width: 175.0,
+              //                                   height: 175.0,
+              //                                   // decoration: BoxDecoration(
+              //                                   //   shape: BoxShape.circle,
+              //                                   //   image: DecorationImage(
+              //                                   //     image:
+              //                                   //         ExactAssetImage('assets/images/as.png'),
+              //                                   //     fit: BoxFit.cover,
+              //                                   //   ),
+              //                                   // )
+              //                                 ),
+              //                               ],
+              //                             ),
+              //                             Padding(
+              //                                 padding: EdgeInsets.only(
+              //                                     top: 90.0, right: 100.0),
+              //                                 child: Row(
+              //                                   mainAxisAlignment:
+              //                                       MainAxisAlignment.center,
+              //                                   children: <Widget>[
+              //                                     CircleAvatar(
+              //                                       backgroundColor:
+              //                                           kPrimaryColor,
+              //                                       radius: 25.0,
+              //                                       child: Icon(
+              //                                         Icons.camera_alt,
+              //                                         color: Colors.white,
+              //                                       ),
+              //                                     )
+              //                                   ],
+              //                                 )),
+              //                           ]),
+              //                     )
+              //                   ],
+              //                 ),
+              //               ),
+              //               Container(
+              //                 color: Color(0xffFFFFFF),
+              //                 child: Padding(
+              //                   padding: EdgeInsets.only(bottom: 25.0),
+              //                   child: Column(
+              //                     crossAxisAlignment: CrossAxisAlignment.start,
+              //                     mainAxisAlignment: MainAxisAlignment.start,
+              //                     children: <Widget>[
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 25.0),
+              //                           child: Row(
+              //                             mainAxisAlignment:
+              //                                 MainAxisAlignment.spaceBetween,
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               Column(
+              //                                 mainAxisAlignment:
+              //                                     MainAxisAlignment.start,
+              //                                 mainAxisSize: MainAxisSize.min,
+              //                                 children: <Widget>[
+              //                                   Text(
+              //                                     'Parsonal Information',
+              //                                     style: TextStyle(
+              //                                         fontSize: 18.0,
+              //                                         fontWeight:
+              //                                             FontWeight.bold),
+              //                                   ),
+              //                                 ],
+              //                               ),
+              //                               Column(
+              //                                 mainAxisAlignment:
+              //                                     MainAxisAlignment.end,
+              //                                 mainAxisSize: MainAxisSize.min,
+              //                                 children: <Widget>[
+              //                                   _status
+              //                                       ? _getEditIcon()
+              //                                       : Container(),
+              //                                 ],
+              //                               )
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 25.0),
+              //                           child: Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               Column(
+              //                                 mainAxisAlignment:
+              //                                     MainAxisAlignment.start,
+              //                                 mainAxisSize: MainAxisSize.min,
+              //                                 children: <Widget>[
+              //                                   Text(
+              //                                     'Name',
+              //                                     style: TextStyle(
+              //                                         fontSize: 16.0,
+              //                                         fontWeight:
+              //                                             FontWeight.bold),
+              //                                   ),
+              //                                 ],
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 2.0),
+              //                           child: Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               Flexible(
+              //                                 child: TextField(
+              //                                   controller: _nameC,
+              //                                   decoration:
+              //                                       const InputDecoration(
+              //                                     hintText: "Enter Your Name",
+              //                                   ),
+              //                                   enabled: !_status,
+              //                                   autofocus: !_status,
+              //                                 ),
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 25.0),
+              //                           child: Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               Column(
+              //                                 mainAxisAlignment:
+              //                                     MainAxisAlignment.start,
+              //                                 mainAxisSize: MainAxisSize.min,
+              //                                 children: <Widget>[
+              //                                   Text(
+              //                                     'Email ID',
+              //                                     style: TextStyle(
+              //                                         fontSize: 16.0,
+              //                                         fontWeight:
+              //                                             FontWeight.bold),
+              //                                   ),
+              //                                 ],
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 2.0),
+              //                           child: Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               Flexible(
+              //                                 child: TextField(
+              //                                   controller: _emailC,
+              //                                   decoration:
+              //                                       const InputDecoration(
+              //                                           hintText:
+              //                                               "Enter Email ID"),
+              //                                   enabled: !_status,
+              //                                 ),
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 25.0),
+              //                           child: new Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               new Column(
+              //                                 mainAxisAlignment:
+              //                                     MainAxisAlignment.start,
+              //                                 mainAxisSize: MainAxisSize.min,
+              //                                 children: <Widget>[
+              //                                   new Text(
+              //                                     'Mobile',
+              //                                     style: TextStyle(
+              //                                         fontSize: 16.0,
+              //                                         fontWeight:
+              //                                             FontWeight.bold),
+              //                                   ),
+              //                                 ],
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       Padding(
+              //                           padding: EdgeInsets.only(
+              //                               left: 25.0, right: 25.0, top: 2.0),
+              //                           child: new Row(
+              //                             mainAxisSize: MainAxisSize.max,
+              //                             children: <Widget>[
+              //                               new Flexible(
+              //                                 child: new TextField(
+              //                                   controller: _mobileC,
+              //                                   decoration: const InputDecoration(
+              //                                       hintText:
+              //                                           "Enter Mobile Number"),
+              //                                   enabled: !_status,
+              //                                 ),
+              //                               ),
+              //                             ],
+              //                           )),
+              //                       !_status
+              //                           ? _getActionButtons()
+              //                           : Center(
+              //                               child: Padding(
+              //                                 padding: EdgeInsets.all(15),
+              //                                 child: Container(
+              //                                   child: TextButton(
+              //                                     onPressed: () {
+              //                                       Navigator.pop(context);
+              //                                     },
+              //                                     child: Text(
+              //                                       "Done",
+              //                                       style: TextStyle(
+              //                                           fontSize: 16.0,
+              //                                           fontWeight:
+              //                                               FontWeight.bold),
+              //                                     ),
+              //                                   ),
+              //                                 ),
+              //                               ),
+              //                             ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               )
+              //             ],
+              //           ),
+              //         ],
+              //       ),
+              //     );
+              //   } else {
+              //     return const Text('Empty data');
+              //   }
+              // } else {
+              //   return Text('State: ${snapshot.connectionState}');
+              // }
+            }));
   }
-}
 
-
-
-class Header extends CustomPainter {
-  @override 
-  void paint(Canvas canvas, Size size){
-    Paint paint = Paint()..color = kPrimaryColor;
-    Path path = Path()
-      ..relativeLineTo(0, 150)
-      ..quadraticBezierTo(size.width/2, 225, size.width, 150)
-      ..relativeLineTo(0, -150)
-      ..close();
-      canvas.drawPath(path, paint);
-  }
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    myFocusNode.dispose();
+    super.dispose();
+  }
 
+  Widget _getActionButtons() {
+    return Padding(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                  child: RaisedButton(
+                    child: Text("Save"),
+                    textColor: Colors.white,
+                    color: Colors.green,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(FocusNode());
+                      });
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                  )),
+            ),
+            flex: 2,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Container(
+                  child: RaisedButton(
+                    child: Text("Cancel"),
+                    textColor: Colors.white,
+                    color: kPrimaryColor,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(FocusNode());
+                      });
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                  )),
+            ),
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getEditIcon() {
+    return GestureDetector(
+      child: CircleAvatar(
+        backgroundColor: kPrimaryColor,
+        radius: 14.0,
+        child: Icon(
+          Icons.edit,
+          color: Colors.white,
+          size: 16.0,
+        ),
+      ),
+      onTap: () {
+        setState(() {
+          _status = false;
+        });
+      },
+    );
+  }
+}
