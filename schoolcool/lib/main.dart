@@ -1,15 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcool/dashboard.dart';
 import 'package:schoolcool/mcq.dart';
 import 'package:schoolcool/splash.dart';
-// import 'package:schoolcool/profile_page.dart';
-// import 'package:schoolcool/Splash.dart';
-// import 'package:schoolcool/details.dart';
-// import 'package:schoolcool/details.dart';
-// import 'package:schoolcool/listview.dart';
-// import 'package:schoolcool/screens/welcome/welcome.dart';
-// import 'login.dart';
-// import 'signup.dart';
+import 'package:schoolcool/profile_page.dart';
+import 'package:schoolcool/Splash.dart';
+import 'package:schoolcool/details.dart';
+import 'package:schoolcool/details.dart';
+import 'package:schoolcool/listview.dart';
+import 'login.dart';
+import 'signup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red//necessary
       ),
       //home: const Mcq(),
-      //  home: const Profile(),
-      home: Splash(),
+      home: const Dashboard(),
+      // home: Splash(),
       //home: Welcome(),
       //home: MyHomePage(), //not necessary
     );
