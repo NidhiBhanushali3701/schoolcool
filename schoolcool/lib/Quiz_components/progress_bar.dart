@@ -15,6 +15,7 @@ class ProgressBar extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 35,
+      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF3F4768), width: 3),
         borderRadius: BorderRadius.circular(50),
@@ -23,7 +24,6 @@ class ProgressBar extends StatelessWidget {
         init: QuestionController(),
         builder: (controller) {
           return Stack(
-            padding: EdgeInsets.fromLTRB(0, 50, 0, 0)
             children: [
               // LayoutBuilder provide us the available space for the conatiner
               // constraints.maxWidth needed for our animation
