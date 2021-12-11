@@ -9,7 +9,7 @@ import 'package:schoolcool/SidebarPage.dart';
 // ignore: must_be_immutable
 class MyHomePage extends StatefulWidget {
   var title = 'HOME PAGE', email;
-  MyHomePage({Key key, this.title, this.email}) : super(key: key);
+  MyHomePage({Key key, this.email}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }

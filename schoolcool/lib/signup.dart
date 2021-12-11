@@ -30,6 +30,7 @@ class _SignUpState extends State<SignUp> {
       //'DOB':dob.text.
     });
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -39,6 +40,7 @@ class _SignUpState extends State<SignUp> {
       setState(() {});
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -196,7 +198,9 @@ class _SignUpState extends State<SignUp> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MyHomePage(email: email,)));
+                                    builder: (context) => MyHomePage(
+                                          email: email.text,
+                                        )));
                           }
                         } catch (e) {
                           print(e);

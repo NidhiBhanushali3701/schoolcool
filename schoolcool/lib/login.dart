@@ -12,7 +12,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController email =TextEditingController(), password = TextEditingController();
+  TextEditingController email = TextEditingController(),
+      password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -96,7 +97,9 @@ class _LoginState extends State<Login> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MyHomePage()));
+                                    builder: (context) => MyHomePage(
+                                          email: email.text,
+                                        )));
                           }
                         } catch (e) {
                           print(e);
