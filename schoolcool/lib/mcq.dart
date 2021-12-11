@@ -5,15 +5,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 class Mcq extends StatelessWidget {
   const Mcq({Key key}) : super(key: key);
 
-  get fontWeight => null;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "MCQ page",
+            "MCQs",
             style: TextStyle(
               fontSize: 30,
               color: kPrimaryDarkColor,
