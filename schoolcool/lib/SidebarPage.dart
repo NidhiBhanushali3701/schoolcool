@@ -1,10 +1,7 @@
-//@dart=2.9
-//ignore_for_file:prefer_const_constructors
-// ignore_for_file: use_key_in_widget_constructors, prefer_final_fields
-
 import 'dart:math' as math show pi;
 import 'package:flutter/services.dart';
 import 'package:schoolcool/constants.dart';
+import 'package:schoolcool/profile_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -12,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:schoolcool/home.dart';
 import 'package:schoolcool/listview.dart';
 
-launchWebsite() async{
-  const url = 'https://www.geeksforgeeks.org/';
+launchWebsite() async {
+  const url = 'https://www.google.com/';
   if (await canLaunch(url)) {
     await launch(url, forceSafariVC: true, forceWebView: true);
   } else {
@@ -21,17 +18,17 @@ launchWebsite() async{
   }
 }
 
-
 class SidebarPage extends StatefulWidget {
+  var email;
+  SidebarPage({this.email});
   @override
   _SidebarPageState createState() => _SidebarPageState();
 }
 
 class _SidebarPageState extends State<SidebarPage> {
   List<CollapsibleItem> _items;
-  String _headline='';
-  AssetImage _avatarImg =
-      AssetImage('assets/avatar.png');
+  String _headline = '';
+  AssetImage _avatarImg = AssetImage('assets/avatar.png');
 
   @override
   void initState() {
@@ -51,7 +48,8 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'MCQs',
         icon: Icons.question_answer_rounded,
-        onPressed: () =>setState(() => ListViewPage) , //_headline = 'DashBoard'- need to link the MCQs menu page here
+        onPressed: () => setState(() =>
+            ListViewPage), //_headline = 'DashBoard'- need to link the MCQs menu page here
       ),
       CollapsibleItem(
         text: 'Puzzles',
@@ -61,7 +59,7 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'Website',
         icon: Icons.web_rounded,
-        onPressed: () => setState(() => launchWebsite ),
+        onPressed: () => setState(() => launchWebsite),
       ),
       CollapsibleItem(
         text: 'Exit',
@@ -79,25 +77,31 @@ class _SidebarPageState extends State<SidebarPage> {
         isCollapsed: true,
         items: _items,
         avatarImg: _avatarImg,
-        title: '<Username>',
-        
-        // onTitleTap: () {
-        //   ScaffoldMessenger.of(context).showSnackBar(
-        //       SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
-        // },
+        title: 'Profile',
+        onTitleTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Profile(
+                        email: widget.email,
+                      )));
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //       SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
+        },
         body: _body(size, context),
         backgroundColor: kPrimaryColor,
         selectedTextColor: Colors.white,
         unselectedTextColor: Colors.black,
         unselectedIconColor: Colors.black,
         selectedIconColor: Colors.white,
-        textStyle: TextStyle(fontSize: 17,),
+        textStyle: TextStyle(
+          fontSize: 17,
+        ),
         titleStyle: TextStyle(
             fontSize: 22,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold),
         toggleTitleStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        
         sidebarBoxShadow: [
           BoxShadow(
             color: kPrimaryLightColor,
@@ -118,23 +122,23 @@ class _SidebarPageState extends State<SidebarPage> {
 
   Widget _body(Size size, BuildContext context) {
     return Container(
-      // height: double.infinity,
-      // width: double.infinity,
-      // color: Colors.blueGrey[50],
-      // child: Center(
-      //   child: Transform.rotate(
-      //     angle: math.pi / 2,
-      //     child: Transform.translate(
-      //       offset: Offset(-size.height * 0.3, -size.width * 0.23),
-      //       child: Text(
-      //         _headline,
-      //         style: Theme.of(context).textTheme.headline1,
-      //         overflow: TextOverflow.visible,
-      //         softWrap: false,
-      //       ),
-      //     ),
-      //   ),
-      // ),
-    );
+        // height: double.infinity,
+        // width: double.infinity,
+        // color: Colors.blueGrey[50],
+        // child: Center(
+        //   child: Transform.rotate(
+        //     angle: math.pi / 2,
+        //     child: Transform.translate(
+        //       offset: Offset(-size.height * 0.3, -size.width * 0.23),
+        //       child: Text(
+        //         _headline,
+        //         style: Theme.of(context).textTheme.headline1,
+        //         overflow: TextOverflow.visible,
+        //         softWrap: false,
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        );
   }
 }

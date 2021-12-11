@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcool/constants.dart';
 import 'package:schoolcool/home.dart';
@@ -8,6 +11,34 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController email = TextEditingController(),
+      password = TextEditingController(),
+      pass_word = TextEditingController(),
+      dob = TextEditingController(),
+      name = TextEditingController(),
+      des = TextEditingController(),
+      mobile = TextEditingController();
+
+  void addS() {
+    FirebaseFirestore.instance.collection('students').doc(email.text).set({
+      'email': email.text,
+      'password': password.text,
+      'name': name.text,
+      'mobile': mobile.text,
+      'score': '0',
+      'design': des.text,
+      //'DOB':dob.text.
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,71 +49,164 @@ class _SignUpState extends State<SignUp> {
             child: Form(
               child: Column(
                 children: [
-                  Text("Sign Up"),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.person),
-                        hintText: 'Enter Name',
-                        labelText: "Name"),
+                  SizedBox(
+                    height: 15,
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.email),
-                        hintText: 'Enter Email',
-                        labelText: "Email"),
+                  Text('REGISTER',
+                      style: TextStyle(color: Colors.white, fontSize: 25)),
+                  SizedBox(
+                    height: 30,
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.password),
-                        hintText: 'Enter Password',
-                        labelText: "Password"),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: name,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          hintText: 'Enter Name',
+                          labelStyle: TextStyle(color: Colors.white),
+                          labelText: "Name"),
+                    ),
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    keyboardType: TextInputType.datetime,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.description),
-                        hintText: 'Enter DOB',
-                        labelText: "DOB"),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: email,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          hintText: 'Enter Email',
+                          labelStyle: TextStyle(color: Colors.white),
+                          labelText: "Email"),
+                    ),
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.description),
-                        hintText: 'Enter Designation',
-                        labelText: "Designation"),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: mobile,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          hintText: 'Enter Mobile',
+                          labelStyle: TextStyle(color: Colors.white),
+                          labelText: "Mobile"),
+                    ),
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.password),
-                        hintText: 'Enter Password',
-                        labelText: "Password"),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       left: 15.0, right: 15.0, top: 15, bottom: 0),
+                  //   child: TextFormField(
+                  //     controller: dob,
+                  //     keyboardType: TextInputType.datetime,
+                  //     obscureText: true,
+                  //     decoration: InputDecoration(
+                  //         border: OutlineInputBorder(
+                  //           borderSide: BorderSide(color: Colors.white),
+                  //         ),
+                  //         focusedBorder: OutlineInputBorder(
+                  //             borderSide: BorderSide(color: Colors.white)),
+                  //         labelText: 'DOB',
+                  //         labelStyle: TextStyle(color: Colors.white),
+                  //         hintText: 'Enter DOB'),
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: des,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          labelText: 'Designation',
+                          labelStyle: TextStyle(color: Colors.white),
+                          hintText: 'Enter destination'),
+                    ),
                   ),
-                  TextFormField(
-                    controller: TextEditingController(),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: const Icon(Icons.password),
-                        hintText: 'Re-Enter Password',
-                        labelText: "Password"),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: password,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white),
+                          hintText: 'Enter Password'),
+                    ),
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  MyHomePage(title: "School-Cool")));
-                    },
-                    child: Text("Register"),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    child: TextFormField(
+                      controller: pass_word,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white),
+                          hintText: 'Re-Enter Password'),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 250,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    // ignore: deprecated_member_use
+                    child: FlatButton(
+                      onPressed: () async {
+                        // Navigator.push(
+                        //     context, MaterialPageRoute(builder: (_) => Login()));
+                        try {
+                          final cUser = await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                  email: email.text, password: password.text);
+                          addS();
+                          if (cUser != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage(email: email,)));
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                      child: Text(
+                        'REGISTER',
+                        style: TextStyle(color: kPrimaryColor, fontSize: 25),
+                      ),
+                    ),
                   ),
                   Image.asset('assets/logo4.png'),
                 ],

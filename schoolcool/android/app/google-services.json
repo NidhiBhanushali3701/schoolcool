@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "647354037406",
+    "project_id": "ss-aca",
+    "storage_bucket": "ss-aca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647354037406:android:22affef9064560db8b778f",
+        "android_client_info": {
+          "package_name": "com.example.schoolcool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647354037406-rojnhj7tc4ovfcsq7e5dd60l0mbfnhcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeQluWgyw3H2ueMVWlHHnjG6zuVGiJ7es"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647354037406-rojnhj7tc4ovfcsq7e5dd60l0mbfnhcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
