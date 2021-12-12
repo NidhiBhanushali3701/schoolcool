@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolcool/SidebarPage.dart';
 import 'package:schoolcool/add_q.dart';
 import 'package:schoolcool/constants.dart';
+import 'package:schoolcool/quiz.dart';
 import 'package:schoolcool/view_s.dart';
 //link the dashboard here
 
@@ -61,7 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: kPrimaryLightColor,
                 ),
               )
-            : Container(),
+            : FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Quiz()));
+                },
+                child: Icon(
+                  Icons.web_asset_sharp,
+                  color: kPrimaryLightColor,
+                ),
+              ),
         appBar: AppBar(
           title: Text(widget.title),
         ),

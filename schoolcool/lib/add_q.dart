@@ -25,6 +25,12 @@ class _AddQState extends State<AddQ> {
       'ans': (int.parse(ans.text) - 1),
       //'DOB':dob.text.
     });
+    FirebaseFirestore.instance.collection('questions').add({
+      'question': question,
+      'answer': answer,
+      'ans': (int.parse(ans.text) - 1),
+      //'DOB':dob.text.
+    });
   }
 
   void addQ() async {
