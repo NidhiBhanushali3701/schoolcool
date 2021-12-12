@@ -1,22 +1,59 @@
+// ignore: file_names
+// ignore_for_file: file_names
+
 import 'dart:math' as math show pi;
 import 'package:flutter/services.dart';
 import 'package:schoolcool/constants.dart';
 import 'package:schoolcool/profile_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:schoolcool/dashboard.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcool/home.dart';
 import 'package:schoolcool/listview.dart';
 
 launchWebsite() async {
-  const url = 'https://www.google.com/';
+  const url = 'https://www.ssaeducare.com/';
   if (await canLaunch(url)) {
     await launch(url, forceSafariVC: true, forceWebView: true);
   } else {
     throw 'Could not launch $url';
   }
 }
+
+Future <bool> exitDialog(context){
+    return showDialog(context: context, 
+    builder: (context)=> new AlertDialog(
+      title: Text("Are your sure?"),
+      content: Text("Do you want to exit the app?"),
+      actions: [
+        TextButton(onPressed: (){
+          SystemNavigator.pop();
+
+        }, child: Text("EXIT")),
+        TextButton(onPressed: (){
+          Navigator.of(context).pop(false);
+        }, 
+        child: Text("CANCEL")),
+        
+      ],
+    ));
+  }
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(child: Scaffold(appBar: AppBar(title: Text('Exit Button'),
+    ),
+    ), 
+    onWillPop: ()
+    {
+      exitDialog(context);
+      return Future.value(false);
+    }
+
+    );
+  }
+
+
 
 class SidebarPage extends StatefulWidget {
   var email;
@@ -40,6 +77,12 @@ class _SidebarPageState extends State<SidebarPage> {
   List<CollapsibleItem> get _generateItems {
     return [
       CollapsibleItem(
+        text: 'Dashboard',
+        icon: Icons.dashboard_rounded,
+        onPressed: () => setState(() => const Dashboard()), //need to check
+        isSelected: true,
+      ),
+      CollapsibleItem(
         text: 'About Us',
         icon: Icons.info_rounded,
         onPressed: () => setState(() => _headline = 'DashBoard'),
@@ -49,7 +92,7 @@ class _SidebarPageState extends State<SidebarPage> {
         text: 'MCQs',
         icon: Icons.question_answer_rounded,
         onPressed: () => setState(() =>
-            ListViewPage), //_headline = 'DashBoard'- need to link the MCQs menu page here
+            ListViewPage), // need to link the MCQs menu page here
       ),
       CollapsibleItem(
         text: 'Puzzles',
@@ -59,12 +102,12 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'Website',
         icon: Icons.web_rounded,
-        onPressed: () => setState(() => launchWebsite),
+        onPressed: () => setState(() => launchWebsite), //need to check
       ),
       CollapsibleItem(
         text: 'Exit',
         icon: Icons.exit_to_app_rounded,
-        onPressed: () => setState(() => _headline = 'Face'),
+        onPressed: () => setState(() => exitDialog(context) ), //Need to check
       ),
     ];
   }
@@ -102,6 +145,7 @@ class _SidebarPageState extends State<SidebarPage> {
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold),
         toggleTitleStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        // ignore: prefer_const_literals_to_create_immutables
         sidebarBoxShadow: [
           BoxShadow(
             color: kPrimaryLightColor,
