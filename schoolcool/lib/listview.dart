@@ -45,14 +45,14 @@ class BuildListViewPage extends State<ListViewPage>
         itemBuilder:(_, index)
     {
         return ListTile(
-          title: Text('The List item #$index'),
-          subtitle:const Text('The subtitle'),
+          title: Text('The List item #$index'), //the title of the chapter
+          subtitle:const Text('The subtitle'), //Ideally the scores should be here
           leading: const Icon(Icons.thumb_up_sharp),
           trailing: const Icon(Icons.arrow_forward_rounded),
           onTap: (){
             Navigator.push(
             context,
-            MaterialPageRoute(builder:  (context)=> DetailPage(index)));
+            MaterialPageRoute(builder:  (context)=> DetailPage(index))); //Need to link with the MCQ page here instead of DetailPage
         },
         );
     }
