@@ -110,7 +110,7 @@ class MapScreenState extends State<Profile>
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(left: 25.0),
-                                        child: Text('PROFILE',
+                                        child: Text('${widget.email}',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0,

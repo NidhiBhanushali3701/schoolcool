@@ -48,10 +48,12 @@ class Option extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "$text",
-                    style: TextStyle(color: getTheRightColor(), fontSize: 15),
-                    maxLines: 5,
+                  Expanded(
+                    child: Text(
+                      "$text",
+                      style: TextStyle(color: getTheRightColor(), fontSize: 15),
+                      maxLines: 5,
+                    ),
                   ),
                   Container(
                     height: 26,
