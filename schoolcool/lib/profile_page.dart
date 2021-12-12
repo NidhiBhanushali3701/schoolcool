@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'constants.dart';
 
 class Profile extends StatefulWidget {
-  var email;
-  Profile({this.email});
+  var email, who;
+  Profile({this.email, this.who});
   @override
   MapScreenState createState() => MapScreenState();
 }
@@ -21,6 +21,7 @@ class MapScreenState extends State<Profile>
   void initState() {
     super.initState();
     getS();
+    getDown();
   }
 
   void updateS(String updateField, var updatedValue) {
@@ -28,7 +29,7 @@ class MapScreenState extends State<Profile>
         .collection('students')
         .doc(widget.email.toString())
         .update({
-      'des': des.text,
+      'design': des.text,
       'name': name.text,
       'mobile': mobile.text,
     });
@@ -40,7 +41,30 @@ class MapScreenState extends State<Profile>
       var d_ = d.data();
       if (widget.email == d.data()['email']) {
         name = TextEditingController(text: '${d.data()['name']}');
-        des = TextEditingController(text: '${d.data()['des']}');
+        des = TextEditingController(text: '${d.data()['design']}');
+        mobile = TextEditingController(text: '${d.data()['mobile']}');
+      }
+    }
+  }
+
+  void updateDown(String updateField, var updatedValue) {
+    FirebaseFirestore.instance
+        .collection('teachers')
+        .doc(widget.email.toString())
+        .update({
+      'design': des.text,
+      'name': name.text,
+      'mobile': mobile.text,
+    });
+  }
+
+  void getDown() async {
+    var data = await FirebaseFirestore.instance.collection('teachers').get();
+    for (var d in data.docs) {
+      var d_ = d.data();
+      if (widget.email == d.data()['email']) {
+        name = TextEditingController(text: '${d.data()['name']}');
+        des = TextEditingController(text: '${d.data()['design']}');
         mobile = TextEditingController(text: '${d.data()['mobile']}');
       }
     }
@@ -50,6 +74,9 @@ class MapScreenState extends State<Profile>
   Widget build(BuildContext context) {
     return Scaffold(
         body: StreamBuilder(
+            // stream: widget.who
+            //     ? FirebaseFirestore.instance.collection('teachers').snapshots()
+            //     :
             stream:
                 FirebaseFirestore.instance.collection('students').snapshots(),
             builder: (context, snapshot) {
@@ -162,7 +189,7 @@ class MapScreenState extends State<Profile>
                                           mainAxisSize: MainAxisSize.min,
                                           children: <Widget>[
                                             Text(
-                                              'Parsonal Information',
+                                              'Personal Information',
                                               style: TextStyle(
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.bold),
@@ -216,43 +243,6 @@ class MapScreenState extends State<Profile>
                                             ),
                                             enabled: !_status,
                                             autofocus: !_status,
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 25.0, right: 25.0, top: 25.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: <Widget>[
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            Text(
-                                              'Email ID',
-                                              style: TextStyle(
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 25.0, right: 25.0, top: 2.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: <Widget>[
-                                        Flexible(
-                                          child: TextField(
-                                            controller: des,
-                                            decoration: const InputDecoration(
-                                                hintText: "Enter Designation"),
-                                            enabled: !_status,
                                           ),
                                         ),
                                       ],

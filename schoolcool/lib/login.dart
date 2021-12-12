@@ -99,6 +99,7 @@ class _LoginState extends State<Login> {
                                 MaterialPageRoute(
                                     builder: (context) => MyHomePage(
                                           email: email.text,
+                                          who: 1,
                                         )));
                           }
                         } catch (e) {

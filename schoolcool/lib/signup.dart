@@ -18,9 +18,9 @@ class _SignUpState extends State<SignUp> {
       name = TextEditingController(),
       des = TextEditingController(),
       mobile = TextEditingController();
-
-  void addS() {
-    FirebaseFirestore.instance.collection('students').doc(email.text).set({
+  var sh = false;
+  void addUp(var col) {
+    FirebaseFirestore.instance.collection(col).doc(email.text).set({
       'email': email.text,
       'password': password.text,
       'name': name.text,
@@ -47,176 +47,202 @@ class _SignUpState extends State<SignUp> {
       child: Scaffold(
         backgroundColor: kPrimaryColor,
         body: SingleChildScrollView(
-          child: Container(
-            child: Form(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text('REGISTER',
-                      style: TextStyle(color: Colors.white, fontSize: 25)),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: name,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          hintText: 'Enter Name',
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: "Name"),
+          child: Stack(alignment: AlignmentDirectional.center, children: [
+            Container(
+              child: Form(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 15,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          hintText: 'Enter Email',
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: "Email"),
+                    Text('REGISTER',
+                        style: TextStyle(color: Colors.white, fontSize: 25)),
+                    SizedBox(
+                      height: 30,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: mobile,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          hintText: 'Enter Mobile',
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: "Mobile"),
-                    ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(
-                  //       left: 15.0, right: 15.0, top: 15, bottom: 0),
-                  //   child: TextFormField(
-                  //     controller: dob,
-                  //     keyboardType: TextInputType.datetime,
-                  //     obscureText: true,
-                  //     decoration: InputDecoration(
-                  //         border: OutlineInputBorder(
-                  //           borderSide: BorderSide(color: Colors.white),
-                  //         ),
-                  //         focusedBorder: OutlineInputBorder(
-                  //             borderSide: BorderSide(color: Colors.white)),
-                  //         labelText: 'DOB',
-                  //         labelStyle: TextStyle(color: Colors.white),
-                  //         hintText: 'Enter DOB'),
-                  //   ),
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: des,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          labelText: 'Designation',
-                          labelStyle: TextStyle(color: Colors.white),
-                          hintText: 'Enter destination'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: password,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.white),
-                          hintText: 'Enter Password'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, right: 15.0, top: 15, bottom: 0),
-                    child: TextFormField(
-                      controller: pass_word,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.white),
-                          hintText: 'Re-Enter Password'),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    height: 50,
-                    width: 250,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
-                    // ignore: deprecated_member_use
-                    child: FlatButton(
-                      onPressed: () async {
-                        // Navigator.push(
-                        //     context, MaterialPageRoute(builder: (_) => Login()));
-                        try {
-                          final cUser = await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                                  email: email.text, password: password.text);
-                          addS();
-                          if (cUser != null) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyHomePage(
-                                          email: email.text,
-                                        )));
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      child: Text(
-                        'REGISTER',
-                        style: TextStyle(color: kPrimaryColor, fontSize: 25),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: name,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            hintText: 'Enter Name',
+                            labelStyle: TextStyle(color: Colors.white),
+                            labelText: "Name"),
                       ),
                     ),
-                  ),
-                  Image.asset('assets/logo4.png'),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: email,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            hintText: 'Enter Email',
+                            labelStyle: TextStyle(color: Colors.white),
+                            labelText: "Email"),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: mobile,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            hintText: 'Enter Mobile',
+                            labelStyle: TextStyle(color: Colors.white),
+                            labelText: "Mobile"),
+                      ),
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(
+                    //       left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    //   child: TextFormField(
+                    //     controller: dob,
+                    //     keyboardType: TextInputType.datetime,
+                    //     obscureText: true,
+                    //     decoration: InputDecoration(
+                    //         border: OutlineInputBorder(
+                    //           borderSide: BorderSide(color: Colors.white),
+                    //         ),
+                    //         focusedBorder: OutlineInputBorder(
+                    //             borderSide: BorderSide(color: Colors.white)),
+                    //         labelText: 'DOB',
+                    //         labelStyle: TextStyle(color: Colors.white),
+                    //         hintText: 'Enter DOB'),
+                    //   ),
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: des,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            labelText: 'Designation',
+                            labelStyle: TextStyle(color: Colors.white),
+                            hintText: 'Enter destination'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: password,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.white),
+                            hintText: 'Enter Password'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, top: 15, bottom: 0),
+                      child: TextFormField(
+                        controller: pass_word,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.white),
+                            hintText: 'Re-Enter Password'),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      height: 50,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
+                      // ignore: deprecated_member_use
+                      child: FlatButton(
+                        onPressed: () async {
+                          // Navigator.push(
+                          //     context, MaterialPageRoute(builder: (_) => Login()));
+                          setState(() {
+                            sh = true;
+                          });
+                          try {
+                            final cUser = await FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                    email: email.text, password: password.text);
+                            FirebaseAuth.instance.currentUser
+                                .sendEmailVerification();
+                            if (des == 'Teacher')
+                              addUp('teachers');
+                            else
+                              addUp('students');
+                            setState(() {
+                              sh = false;
+                            });
+                            if (cUser != null) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                            email: email.text,
+                                            who: 1,
+                                          )));
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
+                          setState(() {
+                            sh = false;
+                          });
+                        },
+                        child: Text(
+                          'REGISTER',
+                          style: TextStyle(color: kPrimaryColor, fontSize: 25),
+                        ),
+                      ),
+                    ),
+                    Image.asset('assets/logo4.png'),
+                  ],
+                ),
               ),
             ),
-          ),
+            sh
+                ? Center(
+                    child: Container(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Center(
+                    child: Container(),
+                  )
+          ]),
         ),
       ),
     );
