@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolcool/controllers/question_controller.dart';
 import 'package:schoolcool/controllers/questions.dart';
+import 'package:schoolcool/home.dart';
 import '../../../constants.dart';
 import 'option.dart';
 
@@ -42,6 +43,19 @@ class QuestionCard extends StatelessWidget {
               press: () => _controller.checkAns(question, index),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+              },
+              child: Text("SUBMIT",
+                  style: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w600,
+                  ))),
         ],
       ),
     );

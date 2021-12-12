@@ -94,13 +94,23 @@ class _LoginState extends State<Login> {
                               .signInWithEmailAndPassword(
                                   email: email.text, password: password.text);
                           if (cUser != null) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyHomePage(
-                                          email: email.text,
-                                          who: 1,
-                                        )));
+                            if (email.text == 'academy449@gmail.com') {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                            email: email.text,
+                                            who: 1,
+                                          )));
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                            email: email.text,
+                                            who: 0,
+                                          )));
+                            }
                           }
                         } catch (e) {
                           print(e);

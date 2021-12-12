@@ -13,7 +13,7 @@ import 'package:schoolcool/view_s.dart';
 
 // ignore: must_be_immutable
 class MyHomePage extends StatefulWidget {
-  var title = 'HOME PAGE', email, who;
+  var email, who;
   MyHomePage({Key key, this.email, this.who}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text("WELCOME"),
         ),
         body: Row(
           children: [

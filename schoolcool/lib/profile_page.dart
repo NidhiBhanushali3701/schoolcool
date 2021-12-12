@@ -98,10 +98,15 @@ class MapScreenState extends State<Profile>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Icon(
-                                        Icons.arrow_back_ios,
-                                        color: kPrimaryColor,
-                                        size: 22.0,
+                                      GestureDetector(
+                                        child: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: kPrimaryColor,
+                                          size: 22.0,
+                                        ),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(left: 25.0),

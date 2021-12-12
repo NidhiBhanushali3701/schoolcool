@@ -20,13 +20,13 @@ class _AddQState extends State<AddQ> {
   var sh = false, answer = [], done = false;
   void addUp() {
     FirebaseFirestore.instance.collection('questions').doc().set({
-      'question': question,
+      'question': question.text,
       'answer': answer,
       'ans': (int.parse(ans.text) - 1),
       //'DOB':dob.text.
     });
     FirebaseFirestore.instance.collection('questions').add({
-      'question': question,
+      'question': question.text,
       'answer': answer,
       'ans': (int.parse(ans.text) - 1),
       //'DOB':dob.text.
@@ -34,10 +34,10 @@ class _AddQState extends State<AddQ> {
   }
 
   void addQ() async {
-    answer.add(op0);
-    answer.add(op1);
-    answer.add(op2);
-    answer.add(op3);
+    answer.add(op0.text);
+    answer.add(op1.text);
+    answer.add(op2.text);
+    answer.add(op3.text);
   }
 
   @override

@@ -25,11 +25,11 @@ class Body extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                child: ProgressBar(),
-              ),
+              // Padding(
+              //   padding:
+              //       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              //   child: ProgressBar(),
+              // ),
               SizedBox(height: kDefaultPadding),
               Padding(
                 padding:
@@ -42,14 +42,14 @@ class Body extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline4
-                          .copyWith(color: kSecondaryColor),
+                          .copyWith(color: kPrimaryLightColor),
                       children: [
                         TextSpan(
                           text: "/${_questionController.questions.length}",
                           style: Theme.of(context)
                               .textTheme
                               .headline5
-                              .copyWith(color: kSecondaryColor),
+                              .copyWith(color: kPrimaryLightColor),
                         ),
                       ],
                     ),

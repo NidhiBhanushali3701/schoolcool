@@ -10,25 +10,28 @@ class Quiz extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "Quiz",
-            style: TextStyle(
-              fontSize: 30,
-              color: kPrimaryDarkColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          elevation: 0.0,
-          backgroundColor: kPrimaryLightColor,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
+        centerTitle: true,
+        title: const Text(
+          "Quiz",
+          style: TextStyle(
+            fontSize: 30,
+            color: kPrimaryLightColor,
+            fontWeight: FontWeight.w600,
           ),
         ),
+        elevation: 0.0,
+        backgroundColor: kPrimaryColor,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: kPrimaryLightColor,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: const Body(),
-  
     );
-
   }
 }

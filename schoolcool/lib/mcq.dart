@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:schoolcool/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class Mcq extends StatelessWidget {
-  const Mcq({Key key}) : super(key: key);
+class About extends StatelessWidget {
+  const About({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class Mcq extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "MCQs",
+            "ABOUT US",
             style: TextStyle(
               fontSize: 30,
               color: kPrimaryDarkColor,

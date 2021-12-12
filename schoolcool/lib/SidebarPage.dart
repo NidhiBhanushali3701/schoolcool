@@ -4,7 +4,9 @@
 import 'dart:math' as math show pi;
 import 'package:flutter/services.dart';
 import 'package:schoolcool/constants.dart';
+import 'package:schoolcool/mcq.dart';
 import 'package:schoolcool/profile_page.dart';
+import 'package:schoolcool/quiz.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:schoolcool/dashboard.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -21,39 +23,40 @@ launchWebsite() async {
   }
 }
 
-Future <bool> exitDialog(context){
-    return showDialog(context: context, 
-    builder: (context)=> new AlertDialog(
-      title: Text("Are your sure?"),
-      content: Text("Do you want to exit the app?"),
-      actions: [
-        TextButton(onPressed: (){
-          SystemNavigator.pop();
+Future<bool> exitDialog(context) {
+  return showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+            title: Text("Are your sure?"),
+            content: Text("Do you want to exit the app?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    SystemNavigator.pop();
+                  },
+                  child: Text("EXIT")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text("CANCEL")),
+            ],
+          ));
+}
 
-        }, child: Text("EXIT")),
-        TextButton(onPressed: (){
-          Navigator.of(context).pop(false);
-        }, 
-        child: Text("CANCEL")),
-        
-      ],
-    ));
-  }
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(child: Scaffold(appBar: AppBar(title: Text('Exit Button'),
-    ),
-    ), 
-    onWillPop: ()
-    {
-      exitDialog(context);
-      return Future.value(false);
-    }
-
-    );
-  }
-
-
+@override
+Widget build(BuildContext context) {
+  return WillPopScope(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Exit Button'),
+        ),
+      ),
+      onWillPop: () {
+        exitDialog(context);
+        return Future.value(false);
+      });
+}
 
 class SidebarPage extends StatefulWidget {
   var email;
@@ -79,35 +82,51 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'Dashboard',
         icon: Icons.dashboard_rounded,
-        onPressed: () => setState(() => const Dashboard()), //need to check
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Dashboard()));
+        },//need to check
         isSelected: true,
       ),
+      // CollapsibleItem(
+      //   text: 'About Us',
+      //   icon: Icons.info_rounded,
+      //   onPressed: () {
+      //     Navigator.push(
+      //         context, MaterialPageRoute(builder: (context) => About()));
+      //   },
+      //   isSelected: true,
+      // ),
       CollapsibleItem(
         text: 'About Us',
-        icon: Icons.info_rounded,
-        onPressed: () => setState(() => _headline = 'DashBoard'),
-        isSelected: true,
+          icon: Icons.info_rounded,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => About()));
+        }, //setState(() => ListViewPage), // need to link the MCQs menu page here
       ),
       CollapsibleItem(
         text: 'MCQs',
         icon: Icons.question_answer_rounded,
-        onPressed: () => setState(() =>
-            ListViewPage), // need to link the MCQs menu page here
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Quiz()));
+        }, //setState(() => ListViewPage), // need to link the MCQs menu page here
       ),
-      CollapsibleItem(
-        text: 'Puzzles',
-        icon: Icons.quiz_rounded,
-        onPressed: () => setState(() => _headline = 'Search'),
-      ),
-      CollapsibleItem(
-        text: 'Website',
-        icon: Icons.web_rounded,
-        onPressed: () => setState(() => launchWebsite), //need to check
-      ),
+      // CollapsibleItem(
+      //   text: 'Puzzles',
+      //   icon: Icons.quiz_rounded,
+      //   onPressed: () => setState(() => _headline = 'Search'),
+      // ),
+      // CollapsibleItem(
+      //   text: 'Website',
+      //   icon: Icons.web_rounded,
+      //   onPressed: () => launchWebsite, //need to check
+      // ),
       CollapsibleItem(
         text: 'Exit',
         icon: Icons.exit_to_app_rounded,
-        onPressed: () => setState(() => exitDialog(context) ), //Need to check
+        onPressed: () => setState(() => exitDialog(context)), //Need to check
       ),
     ];
   }

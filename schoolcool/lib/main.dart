@@ -4,7 +4,6 @@ import 'package:schoolcool/dashboard.dart';
 import 'package:schoolcool/mcq.dart';
 import 'package:schoolcool/splash.dart';
 import 'package:schoolcool/profile_page.dart';
-import 'package:schoolcool/Splash.dart';
 import 'package:schoolcool/details.dart';
 import 'package:schoolcool/details.dart';
 import 'package:schoolcool/listview.dart';
@@ -31,9 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red//necessary
       ),
-      //home: const Mcq(),
-      home: const Dashboard(),
-      // home: Splash(),
+      //home: Dashboard(),
+      home: Splash(),
       //home: Welcome(),
       //home: MyHomePage(), //not necessary
     );
