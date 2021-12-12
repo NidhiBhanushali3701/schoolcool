@@ -1,14 +1,40 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:schoolcool/controllers/questions.dart';
 import 'package:schoolcool/controllers/score_screen.dart';
-
+import 'package:schoolcool/quiz.dart';
 // We use get package for our state management
+
+class Question {
+  final int id, answer;
+  final String question;
+  final List<String> options;
+
+  Question({this.id, this.question, this.answer, this.options});
+}
 
 class QuestionController extends GetxController
     with SingleGetTickerProviderMixin {
   // Lets animated our progress bar
+  QuestionController(){
+    getting();
+  }
+  void getting() async {
+    var data = await FirebaseFirestore.instance.collection('questions').get();
+    int i = sample_data.length;
+    for (var d in data.docs) {
+      i++;
+      var d_ = d.data();
+      sample_data.add({
+        "id": i,
+        "question": '${d.data()['question']}',
+        "options": '${d.data()['answer']}',
+        "answer_index": '${d.data()['ans']}',
+      });
+    }
+  }
 
   AnimationController _animationController;
   Animation _animation;

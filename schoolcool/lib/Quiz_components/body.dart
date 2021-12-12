@@ -12,6 +12,7 @@ import 'progress_bar.dart';
 class Body extends StatelessWidget {
   const Body({
     Key key,
+    var questionDB
   }) : super(key: key);
 
   @override
