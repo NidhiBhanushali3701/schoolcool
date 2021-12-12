@@ -39,9 +39,9 @@ dependencies:
   collapsible_sidebar: ^2.0.1+2
   carousel_slider: ^4.0.0
   google_sign_in: ^4.5.9
-  url_launcher: ^6.0.17
-  websafe_svg: ^2.1.0
-  get: ^4.5.1
+  url_launcher: ^6.0.10
+  websafe_svg: ^2.0.0
+  get:
   cloud_firestore: ^3.1.4
   firebase_auth: ^3.3.3
   firebase_core: ^1.10.5
