@@ -70,11 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
             SidebarPage(
               email: widget.email,
             ),
-            widget.who == 1
-                ? Container(
-                    child: SingleChildScrollView(child: Container(child: ViewS(stud: students))),
-                  )
-                : Container()
+            // widget.who == 1
+            //     ? Container(
+            //         child: SingleChildScrollView(child: Container(child: ViewS(stud: students))),
+            //       )
+            //     : Container()
           ],
         ));
   }
