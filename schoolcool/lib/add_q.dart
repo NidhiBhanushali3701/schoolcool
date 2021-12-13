@@ -250,8 +250,10 @@ class _AddQState extends State<AddQ> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('ADDED MCQ!',
+                        style: TextStyle(color: kGreenColor, fontSize: 25)),
                     SizedBox(
-                      height: 50,
+                      height: 150,
                     ),
                     TextButton(
                       onPressed: () {

@@ -22,6 +22,9 @@ class MapScreenState extends State<Profile>
     super.initState();
     getS();
     getDown();
+    name = TextEditingController(text: 'Student 1');
+    des = TextEditingController(text: 'Student');
+    mobile = TextEditingController(text: '9874563210');
   }
 
   void updateS(String updateField, var updatedValue) {
