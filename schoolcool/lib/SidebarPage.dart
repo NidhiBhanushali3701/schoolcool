@@ -84,7 +84,7 @@ class _SidebarPageState extends State<SidebarPage> {
         icon: Icons.dashboard_rounded,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
+              context, MaterialPageRoute(builder: (context) => Dashboard(email: widget.email,)));
         },//need to check
         isSelected: true,
       ),

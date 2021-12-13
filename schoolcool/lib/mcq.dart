@@ -176,7 +176,7 @@ class About extends StatelessWidget {
                 // )
                 const Padding(
                     padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                    child: Text('Getting Started',
+                    child: Text('',
                     style: TextStyle(fontSize: 55, color: kPrimaryColor, fontWeight: FontWeight.w600),
                     )
                     ),

@@ -207,7 +207,7 @@ class _SignUpState extends State<SignUp> {
                               sh = false;
                             });
                             if (cUser != null) {
-                              if (email.text == 'academy449@gmail.com') {
+                              if (email.text == 'academyss449@gmail.com') {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
