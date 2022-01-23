@@ -47,6 +47,12 @@ const List sample_data = [
     "options": ['Cr and Fe', 'Cu and Zn', 'Fe and Cu', 'Cr and Cu'],
     "answer_index": 3,
   },
+  {
+    "id": 6,
+    "question": "2+3 = ?",
+    "options": ['5', '6', '7', '9'],
+    "answer_index": 2,
+  },
 ];
 
 class Quiz extends StatefulWidget {
